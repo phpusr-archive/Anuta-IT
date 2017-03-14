@@ -1,42 +1,14 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
 </head>
 <body>
 
 <div id="data"></div>
+<button id="checkButton">РџСЂРѕРІРµСЂРёС‚СЊ</button>
 
-<script>
-
-    const data = [
-        {
-            question: 'Что относится к логическим общенаучным методам?',
-            answers: [
-                { text: 'Анализ' },
-                { text: 'Синтез' },
-                { text: 'Дедукция, индукция', right: true },
-                { text: 'Все' }
-            ]
-        },
-        {
-            question: 'К функциям ТГП относятся?',
-            answers: [
-                { text: 'Онтологическая' },
-                { text: 'Эвристическая' },
-                { text: 'Гносиологическая' },
-                { text: 'Все перечисленные', right: true }
-            ]
-        }
-    ];
-
-    function test() {
-        const dataBlock = document.getElementById('data');
-        var node = document.createElement("div");
-        var textnode = document.createTextNode("Water");
-        node.appendChild(textnode);
-        dataBlock.appendChild(node);
-    }
-
-</script>
+<script src="test.js"></script>
 
 </body>
 </html>
