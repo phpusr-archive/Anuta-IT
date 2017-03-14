@@ -24,9 +24,13 @@ const data = [
         ]
     }
 ];
+const checkButton = document.getElementById('checkButton');
 
 function init() {
-    document.getElementById('checkButton').onclick = check;
+    data.forEach(q => q.answers.forEach(a => delete a.select));
+    checkButton.style.display = 'inline-block';
+    checkButton.onclick = check;
+    document.getElementById('resetButton').onclick = init;
     test();
 }
 init();
@@ -34,7 +38,9 @@ init();
 function test(checkMode) {
     let rightCount = 0;
     const dataBlock = document.getElementById('data');
+    const resultBlock = document.getElementById('result');
     clearBlock(dataBlock);
+	clearBlock(resultBlock);
     const questionsBlock = document.createElement('ol');
 
     data.forEach((question, qIndex) => {
@@ -43,6 +49,7 @@ function test(checkMode) {
         const rightText = right ? 'Правильно' : 'Не правильно';
 
         const questionBlock = document.createElement('li');
+        if (checkMode) questionBlock.className = right ? 'bg-success' : 'bg-danger';
         const questionTextBlock = document.createElement('div');
         questionTextBlock.appendChild(document.createTextNode(question.question));
         if (checkMode) questionTextBlock.appendChild(document.createTextNode(` (${rightText})`));
@@ -55,6 +62,7 @@ function test(checkMode) {
             const input = document.createElement('input');
             input.setAttribute('type', isRadio ? 'radio' : 'checkbox');
             input.setAttribute('name', `q-${qIndex}`);
+			if (checkMode && answer.select) input.setAttribute('checked', true);
             input.onclick = click.bind(this, qIndex, aIndex);
             answerBlock.appendChild(input);
             answerBlock.appendChild(document.createTextNode(answer.text));
@@ -67,7 +75,9 @@ function test(checkMode) {
     });
 
     dataBlock.appendChild(questionsBlock);
-    //TODO вывести рузультат
+    
+	// Вывод результатов
+	if (checkMode) resultBlock.appendChild(document.createTextNode(`Вы ответили правильно на ${rightCount} из ${data.length} вопросов.`));
 }
 
 function clearBlock(block) {
@@ -83,4 +93,5 @@ function click(qIndex, aIndex) {
 
 function check() {
     test(true);
+    checkButton.style.display = 'none';
 }

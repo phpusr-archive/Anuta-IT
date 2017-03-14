@@ -2,11 +2,37 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <style>
+        #data {
+            padding: 20px 0;
+        }
+        #data ul li {
+            list-style-type: none;
+        }
+        #data ol > li {
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
 
+<h2 align="center">Тест</h2>
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="index.html">Главная</a></li>
+    <li><a href="teoria.html">Теория</a></li>
+    <li><a href="spisoc-istochnikov.html">Список источников</a></li>
+    <li><a href="glossari.html">Глоссарий</a></li>
+    <li><a href="test.html">Тест</a></li>
+    <li><a href="Multimedi resurs.html">Мультимедийные ресурсы</a></li>
+</ul>
+
 <div id="data"></div>
+<div id="result"></div>
+
 <button id="checkButton">Проверить</button>
+<button id="resetButton">Сбросить</button>
 
 <script src="test.js"></script>
 
